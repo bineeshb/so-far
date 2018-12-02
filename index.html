@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>So far</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'Roboto', sans-serif;
+      height: 100%;
+    }
+
+    .so-far-container {
+      min-height: 100%;
+      text-align: center;
+      background-color: #AD1457;
+    }
+
+    #detail {
+      display: inline-block;
+      font-size: 40px;
+      margin-top: 200px;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="so-far-container">
+    <p id="detail"></p>
+  </div>
+
+  <script type="text/javascript">
+    var startDate = new Date(2011, 8, 22),
+        oneDay_ms = (1000 * 60 * 60 * 24),
+        avgDaysInYear = 365.25,
+        monthsInYear = 12,
+        avgDaysInMonth = avgDaysInYear / monthsInYear;
+
+    (function() {
+      var now = new Date(),
+          numOfDays = (now.getTime() - startDate.getTime()) / oneDay_ms,
+          years = numOfDays / avgDaysInYear,
+          remainingMonths = (years % 1) * monthsInYear,
+          remainingDays = (remainingMonths % 1) * avgDaysInMonth;
+
+      document.getElementById('detail').innerText = `${Math.floor(years)} years, ${Math.floor(remainingMonths)} months and ${Math.floor(remainingDays)} days`;
+    })();
+  </script>
+</body>
+</html>
