@@ -23,35 +23,53 @@
       background-color: #AD1457;
     }
 
-    #detail {
-      display: inline-block;
+    .detail {
+      display: block;
       font-size: 40px;
-      margin-top: 200px;
+      padding-top: 10px;
       color: #fff;
+    }
+
+    .detail:first-child {
+      padding-top: 200px;
     }
   </style>
 </head>
 <body>
   <div class="so-far-container">
-    <p id="detail"></p>
+    <p id="age" class="detail"></p>
+    <p id="workExperience" class="detail"></p>
+    <p id="lastChange" class="detail"></p>
   </div>
 
   <script type="text/javascript">
-    var startDate = new Date(2011, 8, 22),
+    var birthDate = new Date(1990, 6, 21),
+        workStartDate = new Date(2011, 8, 22),
+        lastChangeDate = new Date(2016, 11, 21),
         oneDay_ms = (1000 * 60 * 60 * 24),
         avgDaysInYear = 365.25,
         monthsInYear = 12,
         avgDaysInMonth = avgDaysInYear / monthsInYear;
 
     (function() {
+      document.getElementById('age').innerText = getDate(birthDate);
+      document.getElementById('workExperience').innerText = getDate(workStartDate);
+      document.getElementById('lastChange').innerText = getDate(lastChangeDate);
+    })();
+
+    function getDate(fromDate) {
       var now = new Date(),
-          numOfDays = (now.getTime() - startDate.getTime()) / oneDay_ms,
+          numOfDays = (now.getTime() - fromDate.getTime()) / oneDay_ms,
           years = numOfDays / avgDaysInYear,
           remainingMonths = (years % 1) * monthsInYear,
           remainingDays = (remainingMonths % 1) * avgDaysInMonth;
 
-      document.getElementById('detail').innerText = `${Math.floor(years)} years, ${Math.floor(remainingMonths)} months and ${Math.floor(remainingDays)} days`;
-    })();
+      return `${getFormattedValue(years)}y ${getFormattedValue(remainingMonths)}m ${getFormattedValue(remainingDays)}d`;
+    }
+
+    function getFormattedValue(number) {
+      return ('00' + Math.floor(number)).slice(-2);
+    }
   </script>
 </body>
 </html>
