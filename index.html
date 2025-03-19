@@ -40,12 +40,14 @@
     <p id="age" class="detail"></p>
     <p id="workExperience" class="detail"></p>
     <p id="lastChange" class="detail"></p>
+    <p id="lastPromotion" class="detail"></p>
   </div>
 
   <script type="text/javascript">
     var birthDate = new Date(1990, 6, 21),
         workStartDate = new Date(2011, 8, 22),
         lastChangeDate = new Date(2016, 11, 21),
+        lastPromotionDate = new Date(2021, 01, 01),
         oneDay_ms = (1000 * 60 * 60 * 24),
         avgDaysInYear = 365.25,
         monthsInYear = 12,
@@ -55,6 +57,7 @@
       document.getElementById('age').innerText = getDate(birthDate);
       document.getElementById('workExperience').innerText = getDate(workStartDate);
       document.getElementById('lastChange').innerText = getDate(lastChangeDate);
+      document.getElementById('lastPromotion').innerText = getDate(lastPromotionDate);
     })();
 
     function getDate(fromDate) {
